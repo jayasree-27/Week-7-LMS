@@ -1,13 +1,13 @@
 {
   "name": "rbac",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "rimraf": "rimraf dist",
-    "build": "tsc",
-    "start": "node dist/server.js",
-    "dev": "nodemon --watch src --exec ts-node src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "server.js",
+ "scripts": {
+    "clean": "rimraf dist",
+    "start": "npm-run-all --parallel start:ts start:js",
+    "tsc": "tsc",
+    "start:ts": "tsc -w",
+    "start:js": "nodemon --watch dist dist/server.js"
   },
   "keywords": [],
   "author": "",
