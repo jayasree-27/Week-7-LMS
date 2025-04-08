@@ -2,18 +2,20 @@ import { Request, Response } from "express";
 import { registerUser, loginUser } from "../services/authService";
 import ApiError from "../utils/ApiError";
 import { ApiResponse } from "../utils/ApiResponse";
-
+import { logger } from "../utils/logger";
 
 
 export const register=async(req:Request, res:Response)=>{
     try{
         const {name, email, password, role}=req.body;
-
+        
         const user =await registerUser(name, email,password,role);
+        logger("user registered");
         throw new ApiResponse(201, user, "User registered successfully");
         // res.status(201).json({
         //     message:"User registered successfully",user
         // })
+        
     }
     catch(error:any){
         throw new ApiError(500, "Error in registering user", error.message);
