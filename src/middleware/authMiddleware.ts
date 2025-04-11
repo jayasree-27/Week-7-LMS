@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import { Request, Response, NextFunction } from "express";
 import User from "../models/userModel"; 
 import ApiError from "../utils/ApiError";
-import { ApiResponse } from "../utils/ApiResponse";
 
 dotenv.config();
 
@@ -13,7 +12,7 @@ interface AuthRequest extends Request {
 
 export const authMiddleware = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
-      const token = req.header("Authorization")?.replace("Bearer ", "");
+      const token = req.header("Authorization")?.replace("Bearer","");
   
       if (!token) {
         throw new ApiError(401,"No token provided");

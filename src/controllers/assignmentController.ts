@@ -50,3 +50,8 @@ export const getAllAssignments = async (req: Request, res: Response) => {
         //res.status(404).json({ message: "Error fetching assignment", error: error.message });
     }
   };
+
+
+export const deleteAssignment=async(req:Request, res:Response)=>{
+  
+}

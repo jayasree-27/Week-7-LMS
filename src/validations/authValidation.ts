@@ -5,12 +5,11 @@ export const registerSchema = Joi.object({
     email:Joi.string().email().required(),
     password:Joi.string()
     .pattern(
-        new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")
+        new RegExp("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}")
     )
     .required()
     .messages({
-        "string.pattern.base":
-            "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one number",
+        "string.pattern.base":"Password must contain at least 8 characters, one uppercase letter, one lowercase letter, and one number",
     }),
     role:Joi.string().valid("admin", "instructor", "student").default("student"),
 });
@@ -19,4 +18,6 @@ export const loginSchema = Joi.object({
     email:Joi.string().email().required(),
     password:Joi.string().required(),
 });
+
+
 

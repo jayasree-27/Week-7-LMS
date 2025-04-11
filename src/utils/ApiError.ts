@@ -9,6 +9,6 @@ export default class ApiError extends Error {
         this.message = message;
         this.errors = errors;
 
-        Error.captureStackTrace(this, this.constructor);
+        //Error.captureStackTrace(this, this.constructor);
     }
 }
